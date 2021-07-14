@@ -1,0 +1,16 @@
+# Source: external-dns/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-dns
+  namespace: jx
+  labels:
+    app.kubernetes.io/name: external-dns
+    helm.sh/chart: external-dns-5.0.0
+    app.kubernetes.io/instance: external-dns
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::621554809175:role/tf-jx-darling-gator-external-dns
+    meta.helm.sh/release-name: 'external-dns'
+automountServiceAccountToken: true

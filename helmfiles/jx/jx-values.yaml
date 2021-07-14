@@ -20,34 +20,59 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
+    chartRepository: http://jenkins-x-chartmuseum.jx.svc.cluster.local:8080
+    clusterName: tf-jx-darling-gator
     devEnvApprovers:
     - todo
     environmentGitOwner: todo
     gitKind: github
     gitName: github
     gitServer: https://github.com
+    project: "621554809175"
     provider: eks
+    region: eu-central-1
+    registry: 621554809175.dkr.ecr.eu-central-1.amazonaws.com
   environments:
   - key: dev
+    owner: jenkins-x-v3
+    repository: jx3-cluster
   - key: staging
   - key: production
   ingress:
-    domain: change.me
-    externalDNS: false
+    domain: blubitoapps.com
+    externalDNS: true
     kind: ingress
     namespaceSubDomain: -jx.
     tls:
-      email: ""
-      enabled: false
-      production: false
+      email: k.gocheva@blubito.com
+      enabled: true
+      production: true
+  pipelineUser:
+    username: botjx
   repository: nexus
   secretStorage: vault
-  vault: {}
+  storage:
+  - name: logs
+    url: s3://logs-tf-jx-darling-gator-20210714081406012100000006
+  - name: reports
+    url: s3://reports-tf-jx-darling-gator-20210714081406010400000003
+  - name: repository
+    url: s3://repository-tf-jx-darling-gator-20210714081406010300000002
+  terraform: true
+  vault:
+    aws:
+      dynamoDBRegion: eu-central-1
+      dynamoDBTable: vault-unseal-tf-jx-darling-gator-dRKOWvOc
+      iamUserName: kgocheva
+      kmsKeyId: 64b418a8-267b-4098-9e97-00927ccca07b
+      kmsRegion: eu-central-1
+      s3Bucket: vault-unseal-tf-jx-darling-gator-20210714081406010800000004
+      s3Region: eu-central-1
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
-  enabled: false
+  enabled: true
 jxRequirementsIngressTLS:
-  enabled: false
+  enabled: true
 jxRequirementsKuberhealthy:
   enabled: false
 jxRequirementsTLSCheck:
