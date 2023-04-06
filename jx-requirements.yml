@@ -15,23 +15,23 @@ spec:
     gitServer: https://github.com
     project: "621554809175"
     provider: eks
-    region: eu-central-1
-    registry: 621554809175.dkr.ecr.eu-central-1.amazonaws.com
+    region: eu-west-1
+    registry: 621554809175.dkr.ecr.eu-west-1.amazonaws.com
   environments:
   - key: dev
     owner: jenkins-x-v3
     repository: jx3-cluster
   - key: staging
   - key: production
-  ingress:
-    domain: blubitoapps.com
-    externalDNS: true
-    kind: ingress
-    namespaceSubDomain: -jx.
-    tls:
-      email: k.gocheva@blubito.com
-      enabled: true
-      production: true
+#  ingress:
+#    domain: blubitoapps.com
+#    externalDNS: true
+#    kind: ingress
+#    namespaceSubDomain: -jx.
+#    tls:
+#      email: k.gocheva@blubito.com
+#      enabled: true
+#      production: true
   pipelineUser:
     username: botjx
   repository: nexus
@@ -46,11 +46,11 @@ spec:
   terraform: true
   vault:
     aws:
-      dynamoDBRegion: eu-central-1
+      dynamoDBRegion: eu-west-1
       dynamoDBTable: vault-unseal-tf-jx-darling-gator-dRKOWvOc
       iamUserName: kgocheva
       kmsKeyId: 64b418a8-267b-4098-9e97-00927ccca07b
-      kmsRegion: eu-central-1
+      kmsRegion: eu-west-1
       s3Bucket: vault-unseal-tf-jx-darling-gator-20210714081406010800000004
-      s3Region: eu-central-1
+      s3Region: eu-west-1
   webhook: lighthouse
